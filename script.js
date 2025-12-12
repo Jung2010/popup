@@ -1,7 +1,5 @@
 const $ = v=>document.querySelector(v);
 
-$("#showPopup").onclick = ()=>alert();
-$("#showConfirm").onclick = ()=>confirm();
-$("#showPrompt").onclick = ()=>prompt();
-
-popup("alert");
+$("#showPopup").addEventListener('click',()=>popup('alert'));
+$("#showConfirm").addEventListener('click',()=>popup('confirm'));
+$("#showPrompt").addEventListener('click',()=>popup('prompt'));

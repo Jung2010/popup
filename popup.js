@@ -3,7 +3,9 @@ const popup = (function(){
     let count = 0;
     let closedCount = 0;
     return async function(type,title="Title",text="Text",components={},bodyStyle={}){
-        const comps = {};
+        console.log("Start",count);
+
+        const comps = components??{};
 
         comps.main??={};
         comps.main.mainColor??="lightgray";
@@ -34,6 +36,7 @@ const popup = (function(){
         };
 
         const $pu = $("#popup"+count);
+        const $confBtn = $("#confirmBtn"+count);
         applyCss($pu,{
             padding: "100px",
             background: "none",
@@ -46,7 +49,7 @@ const popup = (function(){
             right: "0px"
         });
         applyCss($pu,bodyStyle);
-        applyCss($("#confirmBtn"+count),{
+        applyCss($confBtn,{
             background: comps.main.mainColor,
             border: "none",
             padding: "10px",
@@ -55,8 +58,19 @@ const popup = (function(){
             paddingRight: "20px",
             minWidth: "200px",
             marginTop: "50px",
-            borderRadius: "10px"
+            borderRadius: "10px",
+            cursor: "pointer"
         });
+
+        const close = function(){
+            $pu.remove();
+        };
+
+        $confBtn.onclick = ()=>{
+            close();
+        };
+
+        console.log("End",count);
         return false;
     }
 })();
